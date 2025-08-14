@@ -1,15 +1,23 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:plannera/app.dart';
+import 'package:plannera/core/di/setup_locator.dart';
+import 'package:plannera/core/security/state/auth_cubit.dart';
 
 void main() {
-  runApp(const MainApp());
-}
+  WidgetsFlutterBinding.ensureInitialized();
+  setupLocator();
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return PlannerApp();
-  }
+  
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider<AuthCubit>(create: (context) => GetIt.I<AuthCubit>()),
+      ],
+      child: PlannerApp(),
+    ),
+  );
 }

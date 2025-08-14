@@ -71,7 +71,7 @@ class HomeScreen extends StatelessWidget {
                     children: [
                         
                         Padding(
-                          padding: EdgeInsetsGeometry.all(20),
+                          padding: const EdgeInsets.all(20.0),
                           child: Row(
                             children: [
                               Icon(Icons.analytics_outlined),
