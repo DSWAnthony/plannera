@@ -20,6 +20,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> checkAuthOnStart() async {
     final auth = await checkAuth();
+    print(auth); 
     if (auth.isSome()) {
       emit(state.copyWith(isAuthenticated: true));
     }

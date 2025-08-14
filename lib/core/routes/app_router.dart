@@ -12,11 +12,7 @@ import 'package:plannera/modules/setting/presentation/screens/setting_screen.dar
 import 'package:plannera/modules/task/presentation/screens/task_screen.dart';
 import 'package:plannera/shared/layout/widgets/main_scaffold.dart';
 
-GoRouter createRouter() {
-  final authCubit = GetIt.I<AuthCubit>();
-  
-  // Validar estado de autenticación
-  authCubit.checkAuthOnStart();
+GoRouter createRouter(AuthCubit authCubit) {
 
   return GoRouter(
     refreshListenable: GoRouterRefreshStream(authCubit.stream),

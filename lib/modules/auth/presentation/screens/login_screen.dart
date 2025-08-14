@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:plannera/core/routes/app_router_names.dart';
 import 'package:plannera/core/security/state/auth_cubit.dart';
 import 'package:plannera/core/security/state/auth_state.dart';
 
@@ -14,7 +16,15 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       body: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
+          if (state.isAuthenticated) {
 
+            context.go(AppRoutes.home.path);
+          } else if (state.isError) {
+            
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text(state.errorMessage ?? 'Login failed')),
+            );
+          }
         },
         builder: (context, state) {
           if (state.isLoading) {
@@ -45,11 +55,7 @@ class LoginScreen extends StatelessWidget {
                   },
                   child: const Text('Login'),
                 ),
-                if (state.isError)
-                  Text(
-                    state.errorMessage ?? 'An error occurred',
-                    style: const TextStyle(color: Colors.red),
-                  ),
+              
               ],
             ),
           );
