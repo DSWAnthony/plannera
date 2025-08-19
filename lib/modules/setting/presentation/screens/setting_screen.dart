@@ -10,7 +10,7 @@ class SettingScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: IconButton(
-          onPressed: () => context.read<AuthCubit>().logout(),
+          onPressed: () => context.read<AuthCubit>().signOut(),
           icon: Icon(Icons.logout)
         ),
       ),

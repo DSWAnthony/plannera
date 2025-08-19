@@ -1,7 +1,8 @@
-import 'package:plannera/core/security/model/auth_user.dart';
+
+import 'package:plannera/core/security/domain/entities/user_entity.dart';
 
 class AuthState {
-  final AuthUser? user;
+  final UserEntity? user;
   final String? errorMessage;
   final bool isLoading;
   final bool isError;
@@ -16,7 +17,7 @@ class AuthState {
   });
 
   AuthState copyWith({
-    AuthUser? user,
+    UserEntity? user,
     String? errorMessage,
     bool? isLoading,
     bool? isError,

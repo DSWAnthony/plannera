@@ -1,11 +1,11 @@
 // core/network/dio_client.dart
 import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:plannera/core/constants/name_api.dart';
-import 'package:plannera/core/services/secure_storage.dart';
 
 class DioClient {
   final Dio dio;
-  final SecureStorage secureStorage;
+  final FlutterSecureStorage secureStorage;
 
   DioClient({required this.secureStorage})
       : dio = Dio(
@@ -18,7 +18,7 @@ class DioClient {
     dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) async {
         // Solo añade token si existe
-        final token = await secureStorage.getToken();
+        final token = await secureStorage.read(key: 'acessToken');
         if (token != null) {
           options.headers['Authorization'] = 'Bearer $token';
         }
@@ -38,7 +38,7 @@ class DioClient {
             }
           } catch (e) {
             // Si falla el refresh, forzar logout
-            await secureStorage.clear();
+            await secureStorage.deleteAll();
             // Podrías añadir: context.go('/login') usando un GlobalKey<NavigatorState>
           }
         }
@@ -49,18 +49,18 @@ class DioClient {
 
   Future<String?> _refreshToken() async {
     try {
-      final token = await secureStorage.getToken();
-      if (token!.refreshToken.isEmpty) return null;
+      final token = await secureStorage.read(key: 'refreshToken');
+      if (token!.isEmpty) return null;
 
       // Usa una instancia temporal SIN interceptor para evitar bucles
       final tempDio = Dio();
       final response = await tempDio.post(
         '${ApiSanRemo.baseUrl}/auth/refresh',
-        data: {'refreshToken': token.refreshToken},
+        data: {'refreshToken': token},
       );
       
       final newToken = response.data['accessToken'];
-      await secureStorage.saveToken(newToken);
+      await secureStorage.write(key: 'accessToken', value: newToken);
       return newToken;
     } catch (e) {
       return null;

@@ -48,12 +48,12 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    context.read<AuthCubit>().login(
+                    context.read<AuthCubit>().signIn(
                       emailController.text,
                       passwordController.text,
                     );
                   },
-                  child: const Text('Login'),
+                  child: const Text('Sign Up'),
                 ),
               
               ],
