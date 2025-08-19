@@ -33,9 +33,9 @@ class _CalendarWithDayViewState extends State<CalendarWithDayView> {
   DateTime _selectedDay = _dateOnly(DateTime.now());
   
   // Estados para controlar la expansión del calendario
-  double _calendarHeight = 200; // Altura inicial (vista semanal)
+  double _calendarHeight = 170; // Altura inicial (vista semanal)
   bool _isCalendarExpanded = false;
-  final double _minCalendarHeight = 200; // Vista semanal
+  final double _minCalendarHeight = 170; // Vista semanal
   final double _maxCalendarHeight = 600; // Vista mensual expandida
 
   final ItemScrollController _itemScrollController = ItemScrollController();
@@ -229,10 +229,6 @@ class _CalendarWithDayViewState extends State<CalendarWithDayView> {
                           CalendarFormat.month: 'Mes',
                           CalendarFormat.week: 'Semana',
                         },
-                        daysOfWeekStyle: DaysOfWeekStyle(
-                          weekdayStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey[800]),
-                          weekendStyle: TextStyle(fontWeight: FontWeight.bold, color: Colors.red[700]),
-                        ),
                         calendarBuilders: CalendarBuilders(
                           headerTitleBuilder: (context, day) {
                             final monthNames = [
