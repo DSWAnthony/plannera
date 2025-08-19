@@ -15,7 +15,12 @@ jobs:
           channel: 'stable'
           architecture: x64
       - run: flutter pub get
-      
+
+      # 🔧 Forzar iOS 15.0 en Podfile
+      - name: Set iOS Deployment Target
+        run: |
+          sed -i '' 's/^# platform :ios.*/platform :ios, '\''15.0'\''/' ios/Podfile || \
+          echo "platform :ios, '15.0'" >> ios/Podfile
 
       - run: pod repo update
         working-directory: ios
