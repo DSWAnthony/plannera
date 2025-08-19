@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "516224889397",
+    "project_id": "plannera-c4f27",
+    "storage_bucket": "plannera-c4f27.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516224889397:android:b7add8645ce2518ac4b77c",
+        "android_client_info": {
+          "package_name": "com.example.plannera"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHec9YDGEygPKvYDJ8pjynavrBuNbglRg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,4 @@
-import 'package:plannera/core/security/model/auth_token.dart';
+import 'package:plannera/core/security/data/model/auth_token.dart';
 
 class TokenModel {
   final String access;
