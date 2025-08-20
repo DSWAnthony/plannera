@@ -17,18 +17,18 @@ GoRouter createRouter(AuthCubit authCubit) {
   return GoRouter(
     refreshListenable: GoRouterRefreshStream(authCubit.stream),
     redirect: (context, state) {
-      final loggedIn = authCubit.state.isAuthenticated;
-      final loggingIn = state.uri.path == AppRoutes.login.path;
+      // final loggedIn = authCubit.state.isAuthenticated;
+      // final loggingIn = state.uri.path == AppRoutes.login.path;
 
-      if (!loggingIn && !loggedIn) {
-        final from = state.uri.toString();
+      // if (!loggingIn && !loggedIn) {
+      //   final from = state.uri.toString();
 
-        return '${AppRoutes.login.path}?from=$from';
-      }
+      //   return '${AppRoutes.login.path}?from=$from';
+      // }
 
-      if (loggingIn && loggedIn) {
-        return AppRoutes.home.path;
-      }
+      // if (loggingIn && loggedIn) {
+      //   return AppRoutes.home.path;
+      // }
 
       return null;
     },

@@ -48,10 +48,7 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    context.read<AuthCubit>().signIn(
-                      emailController.text,
-                      passwordController.text,
-                    );
+                    context.go(AppRoutes.home.path);
                   },
                   child: const Text('Sign Up'),
                 ),
