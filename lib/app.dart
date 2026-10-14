@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plannera/core/routes/app_router.dart';
 import 'package:plannera/core/security/state/auth_cubit.dart';
-import 'package:flutter_localizations/flutter_localizations.dart'; // Añade esta importación
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class PlannerApp extends StatelessWidget {
   final AuthCubit authCubit;
